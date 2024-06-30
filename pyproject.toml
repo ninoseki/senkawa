@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "senkawa"
+version = "0.1.0"
+description = "Glob + brache expansion"
+authors = ["Manabu Niseki <manabu.niseki@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "senkawa", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+braceexpand = "^0.1"
+pyparsing = "^3.1"
+
+[tool.poetry.group.dev.dependencies]
+loguru = "^0.7.2"
+pre-commit = "^3.7.1"
+pytest = "^8.2.2"
+pytest-pretty = "^1.2.0"
+pytest-randomly = "^3.15.0"
+ruff = "^0.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint]
+select = [
+  "B",   # flake8-bugbear
+  "C",   # flake8-comprehensions
+  "E",   # pycodestyle errors
+  "F",   # pyflakes
+  "I",   # isort
+  "N",   # pep8-naming
+  "PT",  # fkae8-pytest-style
+  "RET", # flake8-return
+  "RUF", # Ruff-specific rules
+  "SIM", # flake8-simplify
+  "T20", # flake8-print
+  "W",   # pycodestyle warnings
+]
