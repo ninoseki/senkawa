@@ -9,11 +9,9 @@ packages = [{ include = "senkawa", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-braceexpand = "^0.1"
 pyparsing = "^3.1"
 
 [tool.poetry.group.dev.dependencies]
-loguru = "^0.7.2"
 pre-commit = "^3.7.1"
 pytest = "^8.2.2"
 pytest-pretty = "^1.2.0"

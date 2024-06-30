@@ -9,10 +9,15 @@ jobs:
         poetry-version: [1.8.3]
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python and Poetry
-        uses: packetcoders/action-setup-cache-python-poetry@v1.2.0
+      - name: Setup Poetry
+        uses: abatilo/actions-poetry@v3
         with:
-          python-version: ${{matrix.python-version}}
-          poetry-version: ${{matrix.poetry-version}}
+          poetry-version: ${{ matrix.poetry-version }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: poetry
+      - name: Install Python dependencies
+        run: poetry install
       - name: Run tests
         run: poetry run pytest
