@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "senkawa"
 version = "0.1.0"
-description = "Glob + brache expansion"
+description = "Glob with Bash-style brache expansion"
 authors = ["Manabu Niseki <manabu.niseki@gmail.com>"]
 license = "MIT"
 readme = "README.md"

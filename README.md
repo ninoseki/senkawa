@@ -1,6 +1,6 @@
 # senkawa
 
-Glob + Bash-style brace expansion for Python.
+Glob with Bash-style brace expansion.
 
 !!! note
 

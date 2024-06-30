@@ -156,9 +156,9 @@ def brace_expand(pattern: str, *, escape: bool = True) -> Iterator[str]:
 
     Args:
         pattern (str): A brace expansion pattern.
-        escape (bool, optional): Whether to escape or not. Defaults to True.
+        escape (bool, optional): Whether to allow escaping special characters for brace expansion by a backslash or not. Defaults to True.
 
-    Returns:
+    Yields:
         Iterator[str]: An iterator over strings resulting from brace expansion.
 
     Examples:
@@ -210,7 +210,7 @@ def brace_expand(pattern: str, *, escape: bool = True) -> Iterator[str]:
     # Setting 'escape' to False disables backslash escaping.
     >>> list(brace_expand(r'\\{1,2}', escape=False))
     ['\\\\1', '\\\\2']
-    """
+    """  # noqa: E501
     return (
         escape_re.sub(r"\1", s) if escape else s
         for s in parse_pattern(pattern, escape=escape)
@@ -223,9 +223,21 @@ def glob(
     root_dir: str | None = None,
     dir_fd: int | None = None,
     recursive: bool = False,
-    include_hidden: bool = False,
     escape: bool = False,
+    **kwargs,
 ) -> Iterator[str]:
+    """Glob with brace expansion.
+
+    Args:
+        pathname (str): A pathname to glob.
+        root_dir (str | None, optional): A root directory. Defaults to None.
+        dir_fd (int | None, optional): A directory file descriptor. Defaults to None.
+        recursive (bool, optional): Whether to do recursive glob or not. Defaults to False.
+        escape (bool, optional): Whether to allow escaping special characters for brace expansion by a backslash or not. Defaults to True.
+
+    Yields:
+        Iterator[str]: An iterator over strings resulting from glob and brace expansion.
+    """  # noqa: E501
     brace_expanded = brace_expand(pathname, escape=escape)
     glob_expanded = [
         g.glob(
@@ -233,7 +245,7 @@ def glob(
             root_dir=root_dir,
             dir_fd=dir_fd,
             recursive=recursive,
-            include_hidden=include_hidden,
+            **kwargs,
         )
         for p in brace_expanded
     ]
