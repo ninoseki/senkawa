@@ -2,9 +2,8 @@
 
 Glob with Bash-style brace expansion.
 
-!!! note
-
-    This package is highly influenced by [trendels/braceexpand](https://github.com/trendels/braceexpand).
+> [!NOTE]
+> This package is highly influenced by [trendels/braceexpand](https://github.com/trendels/braceexpand).
 
 ## Installation
 
