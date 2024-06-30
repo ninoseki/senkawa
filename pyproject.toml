@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "senkawa"
-version = "0.1.0"
+version = "0.0.0"
 description = "Glob with Bash-style brache expansion"
 authors = ["Manabu Niseki <manabu.niseki@gmail.com>"]
 license = "MIT"
@@ -18,9 +18,12 @@ pytest-pretty = "^1.2.0"
 pytest-randomly = "^3.15.0"
 ruff = "^0.5.0"
 
+[tool.poetry-dynamic-versioning]
+enable = true
+
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.ruff.lint]
 select = [
