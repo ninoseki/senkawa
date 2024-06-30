@@ -22,7 +22,6 @@ pip install senkawa
 >>> list(senkawa.glob("tests/fixtures/{1..3}.txt"))
 ["tests/fixtures/1.txt", "tests/fixtures/2.txt", "tests/fixtures/3.txt"]
 
-# brace-expand only
 # Integer range
 >>> list(senkawa.brace_expand('item{1..3}'))
 ['item1', 'item2', 'item3']
@@ -60,7 +59,7 @@ pip install senkawa
 >>> list(senkawa.brace_expand('{1{2,3}'))
 Traceback (most recent call last):
     ...
-senkawa.UnbalancedBracesError: Unbalanced braces: '{1{2,3}'
+senkawa.errors.UnbalancedBracesError: Unbalanced braces: '{1{2,3}'
 
 # By default, the backslash is the escape character.
 >>> list(senakwa.brace_expand(r'{1\{2,3}'))
